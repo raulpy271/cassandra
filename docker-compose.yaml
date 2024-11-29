@@ -1,0 +1,53 @@
+services:
+    node-1:
+      image: "cassandra:latest"
+      hostname: node-1
+      environment:
+        - CASSANDRA_CLUSTER_NAME="Cluster Bião"
+      volumes:
+        - node-v-1:/var/lib/cassandra:rw
+      healthcheck:
+        test: ["CMD-SHELL", "nodetool status"]
+        interval: 2m
+        start_period: 2m
+        timeout: 10s
+        retries: 3
+    node-2:
+      image: "cassandra:latest"
+      hostname: node-2
+      environment:
+        - CASSANDRA_CLUSTER_NAME="Cluster Bião"
+        - CASSANDRA_SEEDS=node-1
+      volumes:
+        - node-v-2:/var/lib/cassandra:rw
+      healthcheck:
+        test: ["CMD-SHELL", "nodetool status"]
+        interval: 2m
+        start_period: 2m
+        timeout: 10s
+        retries: 3
+      depends_on:
+        node-1:
+          condition: service_healthy
+    node-3:
+      image: "cassandra:latest"
+      hostname: node-3
+      environment:
+        - CASSANDRA_CLUSTER_NAME="Cluster Bião"
+        - CASSANDRA_SEEDS=node-1
+      volumes:
+        - node-v-3:/var/lib/cassandra:rw
+      healthcheck:
+        test: ["CMD-SHELL", "nodetool status"]
+        interval: 2m
+        start_period: 2m
+        timeout: 10s
+        retries: 3
+      depends_on:
+        node-2:
+          condition: service_healthy
+
+volumes:
+  node-v-1:
+  node-v-2:
+  node-v-3:
