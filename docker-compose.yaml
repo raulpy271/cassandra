@@ -1,4 +1,9 @@
 services:
+    client:
+      build: ./client
+      command: sleep infinity
+      volumes:
+        - ./client:/client
     node-1:
       image: "cassandra:latest"
       hostname: node-1
@@ -12,7 +17,7 @@ services:
         interval: 2m
         start_period: 2m
         timeout: 10s
-        retries: 3
+        retries: 4
     node-2:
       image: "cassandra:latest"
       hostname: node-2
@@ -26,7 +31,7 @@ services:
         interval: 2m
         start_period: 2m
         timeout: 10s
-        retries: 3
+        retries: 4
       depends_on:
         node-1:
           condition: service_healthy
@@ -43,7 +48,7 @@ services:
         interval: 2m
         start_period: 2m
         timeout: 10s
-        retries: 3
+        retries: 4
       depends_on:
         node-2:
           condition: service_healthy
