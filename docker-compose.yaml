@@ -6,6 +6,7 @@ services:
         - CASSANDRA_CLUSTER_NAME="Cluster Bião"
       volumes:
         - node-v-1:/var/lib/cassandra:rw
+        - ./structure.sql:/structure.sql
       healthcheck:
         test: ["CMD-SHELL", "nodetool status"]
         interval: 2m
