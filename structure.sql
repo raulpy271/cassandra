@@ -36,3 +36,14 @@ CREATE TABLE IF NOT EXISTS store.customer (
     PRIMARY KEY (username, id)
 );
 
+CREATE TABLE IF NOT EXISTS store.product_image (
+    id uuid,
+    product_id uuid,
+    altname text,
+    sizebin int,
+    resolution tuple<int, int>,
+    format text,
+    data blob, 
+    PRIMARY KEY (id)
+);
+
