@@ -24,3 +24,9 @@ O comando abaixo realiza uma consulta no cluster:
 docker compose exec client python query.py
 ```
 
+Para conectar especificamente com um nó do cluster pode-se explicitar o nó que deseja conectar, por exemplo, para conectar no endereço `node-1` usa-se o comando abaixo:
+
+```sh
+docker compose exec client python query.py node-1
+```
+

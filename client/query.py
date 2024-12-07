@@ -1,7 +1,13 @@
 
-from cassandra.cluster import Cluster
+from session import get_session
 
-cluster = Cluster(['node-1', 'node-2', 'node-3'])
-session = cluster.connect()
 
-print(session.execute("SELECT release_version FROM system.local").one())
+def show_customers(session):
+    customers = session.execute("SELECT * FROM customer").all()
+    print('--- Usuários do sistema ---')
+    for customer in customers:
+        print('Customer', customer.id, customer.username, customer.email, customer.gender)
+    print(f'--- Total {len(customers)} ---')
+
+session = get_session()
+show_customers(session)
