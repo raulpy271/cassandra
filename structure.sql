@@ -23,8 +23,8 @@ CREATE TABLE IF NOT EXISTS store.orders (
 );
 
 CREATE TABLE IF NOT EXISTS store.customer (
-    username text,
     id uuid,
+    username text,
     fullname text,
     email text,
     phone text,
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS store.customer (
     created date,
     password_hash text,
     password_salt text,
-    PRIMARY KEY (username, id)
+    PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS store.product_image (

@@ -4,9 +4,7 @@ from sys import argv
 from cassandra.cluster import Cluster
 
 def get_nodes():
-    if len(argv) > 1:
-        return argv[1:]
-    else: return ['node-1', 'node-2', 'node-3']
+    return ['node-1', 'node-2', 'node-3']
 
 KEYSPACE = 'store'
 nodes = get_nodes()

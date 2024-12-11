@@ -21,12 +21,20 @@ Existe um container chamado `client` que possue scripts necessário para conecta
 O comando abaixo realiza uma consulta no cluster:
 
 ```sh
-docker compose exec client python query.py
+docker compose exec client python query.py <table?>
 ```
 
-Para conectar especificamente com um nó do cluster pode-se explicitar o nó que deseja conectar, por exemplo, para conectar no endereço `node-1` usa-se o comando abaixo:
+## Consultar status do cluster
 
-```sh
-docker compose exec client python query.py node-1
+```
+docker compose exec node-1 nodetool status
+```
+
+## Consultar onde está localizado um registro
+
+Essa é uma operação utilizada para fins didáticos, na prática não é necessário consultar qual nó um dado é localizado, já que isso é feito automaticamente pelo banco de dados distribuido.
+
+```
+docker compose exec node-1 nodetool getendpoints store <table> <row-id>
 ```
 

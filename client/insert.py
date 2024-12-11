@@ -77,6 +77,12 @@ def create_order(session):
         addr,
     ])
 
-session = get_session()
-create_order(session)
+if __name__ == '__main__':
+    session = get_session()
+    for _ in range(random.randint(10, 20)):
+        create_customer(session)
+    for _ in range(random.randint(10, 20)):
+        create_product(session)
+    for _ in range(random.randint(10, 20)):
+        create_order(session)
 
