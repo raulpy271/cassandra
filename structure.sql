@@ -1,6 +1,6 @@
 
 CREATE KEYSPACE IF NOT EXISTS store
-    WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : '1' };
+    WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : '2' };
 
 CREATE TABLE IF NOT EXISTS store.product (
     id uuid,
