@@ -1,5 +1,7 @@
 # Cassandra
 
+![Diagrama do banco Cassandra](./diagram.jpg)
+
 ## Setup
 
 Executa o cluster:
